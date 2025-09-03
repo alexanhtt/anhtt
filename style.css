@@ -1,0 +1,20 @@
+body {
+    background-color: powderblue;
+    text-align: center;
+}
+
+a.red-rec-btn:link, a.red-rec-btn:visited {
+    background-color: rgb(255, 56, 56);
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.red-rec-btn:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+a.red-rec-btn:active {
+    background-color: rgb(70, 200, 20);
+}
