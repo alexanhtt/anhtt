@@ -1,0 +1,298 @@
+body {
+  background-color: black;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 80px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+p {
+  color: white;
+}
+
+code {
+  color: greenyellow;
+  font-size: 20px;
+}
+
+.special-link {
+  color: greenyellow;
+  font-size: 10px;
+  text-decoration: none; /* bỏ gạch chân nếu cần */
+  transition: all 0.3s ease; /* mượt mượt */
+}
+
+.special-link:hover {
+  font-size: 20px;
+  color: red;
+}
+
+.special-link2 {
+  color: blueviolet;
+  font-size: 20px;
+  transition: all 0.3s ease; /* mượt mượt */
+}
+
+.special-link2:hover {
+  font-size: 50px;
+  color: red;
+}
+
+/* Hiệu ứng nảy liên tục (hover) */
+@keyframes bounceHover {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-6px) scale(1.05); }
+  50% { transform: translateY(0) scale(0.98); }
+  75% { transform: translateY(-3px) scale(1.02); }
+}
+
+/* Hiệu ứng nảy mạnh khi click */
+@keyframes bounceClick {
+  0%   { transform: scale(1) translateY(0); }
+  30%  { transform: scale(0.85) translateY(8px); }
+  50%  { transform: scale(1.2) translateY(-12px); }
+  70%  { transform: scale(0.9) translateY(4px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg, #ff6b6b, #f06595, #845ef7);
+  border-radius: 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::before {
+  opacity: 1;
+  animation: spinGlow 3s linear infinite;
+}
+
+@keyframes spinGlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Hover: bounce liên tục */
+.btn:hover {
+  animation: bounceHover 1s infinite;
+}
+
+/* Khi click: bounce mạnh */
+.btn.clicked {
+  animation: bounceClick 0.7s ease;
+}
+
+/* Chữ "Cay cay cay" ẩn mặc định */
+#cay-text {
+  display: none;
+  position: fixed;        /* nằm cố định so với màn hình */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* căn giữa */
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+  text-shadow: 0 0 10px yellow, 0 0 20px orange;
+  text-align: center;
+  z-index: 9999;          /* nổi trên cùng */
+  animation: grow 8s ease-in forwards, flicker 0.2s infinite alternate;
+}
+
+/* To dần chiếm màn hình */
+@keyframes grow {
+  0%   { font-size: 30px; opacity: 1; }
+  100% { font-size: 200vmax; opacity: 1; }
+}
+
+/* Hiệu ứng rung + lóe */
+@keyframes flicker {
+  from { opacity: 1; transform: translate(-50%, -50%) rotate(-1deg); }
+  to   { opacity: 0.9; transform: translate(-50%, -50%) rotate(1deg); }
+}
+
+/* Thông báo troll */
+.message {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffd43b;
+  font-family: "Courier New", monospace;
+  display: none;
+}
+
+.note {
+  font-family: 'Poppins', sans-serif;  /* hoặc 'Fira Code', monospace */
+  font-size: 20px;
+  font-weight: 600;
+  color: #ff6b6b;
+  background: #fff3cd;
+  border-left: 6px solid #ffa502;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.note-box {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  margin: 40px auto;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.note-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(270deg, #ff6b6b, #f06595, #845ef7, #22b8cf, #51cf66);
+  background-size: 600% 600%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 6s ease infinite;
+}
+
+/* Fallback Firefox */
+@supports not (-webkit-background-clip: text) {
+  .note-text {
+    color: #ff6b6b;
+    background: none;
+  }
+}
+
+/* Sparkle pseudo-elements */
+.note-box::before,
+.note-box::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: conic-gradient(
+    from 0deg,
+    #ff6b6b,
+    #f06595,
+    #845ef7,
+    #22b8cf,
+    #51cf66,
+    #ff6b6b
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: spin 5s linear infinite;
+}
+
+.note-box::after {
+  animation-direction: reverse;
+  filter: blur(20px);
+}
+
+/* Hover effect: sparkle rainbow appears */
+.note-box:hover::before,
+.note-box:hover::after {
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Toàn bộ popup */
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none; /* ban đầu ẩn, hiện bằng JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Nội dung popup */
+.popup-content {
+  background: white;
+  color: black;
+  padding: 20px 30px;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  animation: scaleUp 0.3s ease-out;
+}
+
+/* Nút đóng */
+#closePopup {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  background: #ff6b6b;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+#closePopup:hover {
+  background: #e63946;
+  transform: scale(1.05);
+}
+
+/* Hiệu ứng xuất hiện */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
