@@ -69,3 +69,27 @@ window.onload = function () {
         popup.style.display = "none";
     });
 };
+
+function typeText(id, text, speed = 50) {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    element.textContent = ""; // Xóa nội dung ban đầu
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+// Khi người dùng nhấn nút OK trong popup
+document.getElementById("closePopup").addEventListener("click", () => {
+    document.getElementById("popup").style.display = "none";
+    typeText("type-me", "mình là Anhtt - web coding newbie :))", 50);
+});
