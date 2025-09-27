@@ -93,3 +93,56 @@ document.getElementById("closePopup").addEventListener("click", () => {
     document.getElementById("popup").style.display = "none";
     typeText("type-me", "mình là Anhtt - web coding newbie :))", 50);
 });
+
+const music = document.getElementById("music");
+const playBtn = document.querySelector(".play-btn");
+const progress = document.querySelector(".progress");
+const icon = playBtn.querySelector(".icon");
+
+playBtn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    icon.textContent = "⏸"; // đổi thành pause
+  } else {
+    music.pause();
+    icon.textContent = "▶"; // đổi lại play
+  }
+});
+
+// Update progress bar khi nhạc chạy
+music.addEventListener("timeupdate", () => {
+  if (music.duration) {
+    progress.value = (music.currentTime / music.duration) * 100;
+  }
+});
+
+// Seek: tua nhạc khi kéo thanh progress
+progress.addEventListener("input", () => {
+  if (music.duration) {
+    music.currentTime = (progress.value / 100) * music.duration;
+  }
+});
+
+VANTA.BIRDS({
+    el: "body",          // áp hiệu ứng cho toàn bộ body
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+    const span = document.querySelector('.song-overlay span');
+    const container = document.querySelector('.song-overlay');
+
+    const spanWidth = span.offsetWidth;
+    const containerWidth = container.offsetWidth;
+
+    const speed = 30; // tốc độ chạy: pixel mỗi giây
+    const duration = (spanWidth + containerWidth) / speed;
+
+    span.style.animationDuration = `${duration}s`;
+});
