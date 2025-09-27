@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Tuấn Thần Đèn</title>
+        <link rel="icon" href="anhtticon.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
+        <!-- thêm thư viện three.js và vanta -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
     </head>
     <body>
         <h1>xin chào</h1>
@@ -12,25 +16,40 @@
         
         <div class="note-text">
             <b><i>NOTE</i></b><br>
-            <small>giao diện thân thiện ~_~</small>
+            <small>
+                giao diện thân thiện ~_~
+            </small>
         </div>
+        <div class="custom-audio">
+            <button class="play-btn">
+                <span class="icon">▶</span>
+            </button>
+            <div class="song-overlay">
+                <span>Chẳng Còn Thời Gian Ấy - Bem ft. Nguyen, ImPoe ⧸ OFFICIAL</span>
+            </div>
+            <div class="progress-container">
+                <input type="range" class="progress" value="0" min="0" max="100">
+            </div>
+            <audio id="music" src="saved_musics\Chẳng Còn Thời Gian Ấy - Bem ft. Nguyen, ImPoe ⧸ OFFICIAL.mp3" loop></audio>
+        </div>
+        <p>thêm playlist sau,,, nghe tạm!</p>
         <hr style="margin-bottom: 100px;">
-        <p>bạn muốn chat ẩn danh?</p>
-        <a href="https://anonymous-p89d.onrender.com/" class="btn">Nhấn vào đây để thử</a>
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">anon chat v4</p>
+        <button class="btn">Nhấn vào đây để thử</button>
         <div class="message">
             uôi bạn nhanh tay ghêêê😏<br><br>
-            <a href="https://anonymous-p89d.onrender.com/" class="btn">giỏi vô đây</a>
+            <a href="https://anonymous-p89d.onrender.com/" target="_blank" class="btn">⏻</a>
         </div>
 
         <!-- Chữ troll xuất hiện sau khi nút biến mất -->
         <div id="cay-text">Cayyy</div>
-        <!-- Nhạc troll -->
         <audio id="troll-audio" src="caycaycay.mp3" loop></audio>
         <!-- Popup -->
         <div id="popup">
             <div class="popup-content">
             💡 Nên sử dụng <b>MÁY TÍNH</b>... sẽ hay hơn:)))<br>
-            (tại khi hơ chuột vào 1 số chỗ sẽ có hiệu ứng)
+            (tại khi hơ chuột vào 1 số chỗ sẽ có hiệu ứng)<br>
+            CÓ THỂ <del>bạnchưabiết</del> LAG
             <br><br>
             <button id="closePopup">OK</button>
             </div>
